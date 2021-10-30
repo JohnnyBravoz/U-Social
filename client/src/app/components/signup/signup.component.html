@@ -1,0 +1,127 @@
+<!-- <div class="col-lg-4 mx-auto">
+    <div class="card">
+        <div class="card-header">
+            Registro
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="nombre" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="apellido" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="usuario" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="password" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="confirm password" required>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <input type="radio" [(ngModel)]="imgOption" name="imgOption" [value]="1"
+                            style="margin-right: 10px" [checked]="isChecked">
+                        <label for="imgOption1">Take a picture.</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" [(ngModel)]="imgOption" name="imgOption" [value]="2"
+                            style="margin-right: 10px" [checked]="!isChecked">
+                        <label for="imgOption2">Upload a image.</label>
+                    </div>
+
+                </div>
+                <div class="form-group" *ngIf="imgOption == 1">
+                    <input type="file" class="d-none" (change)="onPhotoSelected($event)" #photoInput>
+                    <img src="assets/no_image.png" class="img-fluid" alt="No Image" (click)="photoInput.click()">
+                    <label for="file">Tap to select image.</label>
+                </div>
+                <div class="form-group" *ngIf="imgOption == 2">
+                    <webcam [height]="500" [width]="500" [trigger]="triggerObservable"
+                        (imageCapture)="handleImage($event)">
+                    </webcam>
+                    <!-- Button Takes Photo --
+                    <button class="actionBtn" (click)="triggerSnapshot();">Take A Snapshot</button>
+                    <!-- Snapshot Div where image will be shown --
+                    <div class="snapshot" *ngIf="webcamImage">
+                        <h2>Take your image or get another</h2>
+                        <img [src]="webcamImage.imageAsDataUrl" class="img-fluid" />
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div> -->
+
+
+<div class="container d-flex justify-content-center my-5">
+    <div class="row my-2 mx-2 main">
+        <!--left-column-->
+        <div class="col-md-4 col-12 mycol">
+            <!--image--> <img src="assets/signup.jpg" width="100%" height="75%"> </div>
+        <!--right-column-->
+        <div class="col-md-8 col-12 xcol">
+            <h2 class="title pt-5 pb-3">Sign up</h2>
+            <form class="myform">
+                <div class="row rone">
+                    <div class="form-group col-md-6 fone py-3"> <input type="text" class="form-control" placeholder="Nombre"> </div>
+                    <div class="form-group col-md-6 ftwo py-3"> <input type="text" class="form-control" placeholder="Apellido"> </div>
+                </div>
+                <div class="row rtwo">
+                    <div class="form-group col-md-6 fthree py-3"> <input type="text" class="form-control jk" placeholder="Usuario"> </div>
+                    <div class="form-group col-md-6 ffour py-3"> <input type="email" class="form-control lm" placeholder="email@ejemplo.com"> </div>
+                </div>
+                <div class="row rthree">
+                    <div class="form-group col-md-6 ffive py-3"> <input type="password" class="form-control" placeholder="Contraseña"> </div>
+                    <div class="form-group col-md-6 fsix py-3"> <input type="password" class="form-control" placeholder="Confirmar Contraseña"> </div>
+                </div>
+                <div class="row rfour">
+                    <div class="form-group col-md-6 fseven py-3">
+                        <input type="radio" [(ngModel)]="imgOption" name="imgOption" [value]="1"
+                            style="margin-right: 10px" [checked]="isChecked">
+                        <label for="imgOption1">Take a picture.</label><br>
+                    </div>
+                    <div class="form-group col-md-6 feight py-3">
+                        <input type="radio" [(ngModel)]="imgOption" name="imgOption" [value]="2"
+                            style="margin-right: 10px" [checked]="!isChecked">
+                        <label for="imgOption2">Upload a image.</label>
+                    </div>
+                </div>
+                <div class="row rfive">
+                    <div class="form-group col-md-6 fnine py-3" *ngIf="imgOption == 1">
+                        <input type="file"  class="d-none" accept=".jpg, .png|image/*" (change)="selectFile($event)" #photoInput>
+                        <img src="assets/no_image.png" class="img-fluid" alt="No Image" (click)="photoInput.click()">
+                        <label for="file">Tap to select image.</label>
+                    </div>
+                    
+                </div>
+                <div class="row rsix">
+                    <div class="form-group col-md-6 ften py-3" *ngIf="imgOption == 2">
+                        <webcam [height]="250" [width]="250" [trigger]="triggerObservable"
+                            (imageCapture)="handleImage($event)" class="img-fluid">
+                        </webcam>
+                        <!-- Button Takes Photo -->
+                        <button class="btn btn-primary" (click)="triggerSnapshot();">Tomar Foto</button>
+                    </div>
+                    <div class="form-group col-md-6 feleven py-3" *ngIf="webcamImage && imgOption == 2">
+                        <img [height]="250" [width]="250" [src]="webcamImage.imageAsDataUrl" class="img-fluid" />
+                    </div>
+
+                    
+                </div>
+                <div class="row rseven">
+                    <div class="form-group col-md-6 feleven py-3"> <button type="submit" class="btn btn-primary"><span>Crear Cuenta</span></button> </div>
+                    <div class="form-group col-md-6 ftwelve py-3">
+                        <p class="text-muted">Ya tienes una cuenta?<br><a routerLink="/signin">Iniciar Sesion</a></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
