@@ -5,6 +5,7 @@ import {Subject, Observable} from 'rxjs';
 import {SignupService} from '../../services/signup.service'
 import * as CryptoJS from 'crypto-js';
 
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -26,7 +27,7 @@ export class SignupComponent implements OnInit {
   imgPreview? : string | ArrayBuffer | null;
   ext?: string;
   file?: File  | any
-  constructor( private signupService: SignupService, private router: Router) {}
+  constructor(private router: Router ) {}
 
   ngOnInit(): void {
   }
@@ -65,20 +66,21 @@ export class SignupComponent implements OnInit {
     reader.readAsDataURL(this.file);
   }
 
-  uploadImage(username: HTMLInputElement, email: HTMLInputElement, pass: HTMLInputElement, conf_pass: HTMLInputElement): boolean{
+  uploadImage(name:HTMLInputElement, lastname:HTMLInputElement, username: HTMLInputElement, email: HTMLInputElement, pass: HTMLInputElement, conf_pass: HTMLInputElement): boolean{
     if(this.imgPreview == null){
       alert("Ingrese una imagen");
     }else{
       if(this.ext ===".jpg" || this.ext ===".png"){
         if(pass.value === conf_pass.value){
           const encryptedPass= CryptoJS.SHA256(pass.value).toString();
-          this.signupService.addUser(username.value, email.value, encryptedPass, this.base64)
-          .subscribe((res:any)=> {
-            alert(res.msj);
-            this.router.navigate(['/']);
-          }, (err:any) => {
-            alert(err);
-          });
+          alert("Datos correctos");
+          // this.signupService.addUser(username.value, email.value, encryptedPass, this.base64)
+          // .subscribe((res:any)=> {
+          //   alert(res.msj);
+          //   this.router.navigate(['/']);
+          // }, (err:any) => {
+          //   alert(err);
+          // });
         }else{
           alert("Las constraseñas no coinciden.")
         }

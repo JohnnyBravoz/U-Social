@@ -6,8 +6,8 @@ import { HttpClient } from '@angular/common/http'
 
 export class SignupService {
 
-  //URI = 'http://localhost:4000/users/signup';
-  URI = 'http://localhost';
+  //URI = 'http://localhost:4000/user/prueba';
+  URI = 'http://localhost'
   constructor(private http: HttpClient) { }
   
   addUser(username: string, email: string, pass: string, img: string | any){
